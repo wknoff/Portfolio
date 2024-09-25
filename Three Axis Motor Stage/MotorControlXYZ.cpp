@@ -110,7 +110,7 @@ void MotorControlXYZ::serialWrite(const std::string& strTransmit)
 	WriteFile(this->handle, packet.c_str(), packet.length(), &bytesWritten, NULL);
 
 	// According to OES host-controlled operation guide:
-	// "After sending each packet of data to the OES™ controller, sufficient time should be given to the controller to process it, usually 100msec."
+	// "After sending each packet of data to the OESâ„¢ controller, sufficient time should be given to the controller to process it, usually 100msec."
 	Sleep(100);
 
 	// Reading for response
