@@ -1,1 +1,1 @@
-
+# Programmed a C++ library to control a three-axis stepper motor stage via UART over RS-232 port. Wrote functions to open a serial port, establish a serial connection, and read/write with error detection.
