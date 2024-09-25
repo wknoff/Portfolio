@@ -1,9 +1,8 @@
 # Portfolio
 
 # Hi! Welcome to my portfolio.
-# Projects:
-
-[Three Axis Motor Stage](Three Axis Motor Stage/index.md)
+## Projects:
+[Three Axis Motor Stage](/Three Axis Motor Stage/index.md)
 
 
 # At the moment, the only files I have in it are dedicated to research I did at Laboratory for Advanced Integrated Circuits and Systems which is based at the University of Rochester, my college.
