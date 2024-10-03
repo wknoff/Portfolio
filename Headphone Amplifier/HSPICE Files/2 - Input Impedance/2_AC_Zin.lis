@@ -1,0 +1,1004 @@
+ ****** PrimeSim HSPICE -- T-2022.06-SP1-2 win64 (Oct 31 2022 7869328) ******
+  Copyright (c) 1986 - 2024 by Synopsys, Inc. All Rights Reserved.
+  This software and the associated documentation are proprietary
+  to Synopsys, Inc. This software may only be used in accordance
+  with the terms and conditions of a written license agreement with
+  Synopsys, Inc. All other use, reproduction, or distribution of
+  this software is strictly prohibited.
+  Input File: 2_AC_Zin.sp                                                       
+  Command line options: C:\synopsys\Hspice_T-2022.06-SP1-2\WIN64\hspice.com -i 2_AC_Zin.sp -o C:\Users\William\Documents\Code\ECE 222\Amplifier Project\V3 - Low Pass and High Pass Filters\2 - Input Impedance\2_AC_Zin.lis
+  Start time: Thu Apr 25 11:20:43 2024
+  lic:  
+  lic: FLEXlm: SDK_12.11.3 
+  lic: USER:   William              HOSTNAME: LAPTOP-MAQ4I85U 
+  lic: HOSTID: 365afc8ee73b         PID:      65556 
+  lic: Using FLEXlm license file: 
+  lic: 5280@lmsynopsys.seas.rochester.edu 
+  lic: Checkout 1 hspice 
+  lic: License/Maintenance for hspice will expire on 03-may-2024/2023.12 
+  lic: 1(in_use)/50(total) FLOATING license(s) on SERVER 5280@lmsynopsys.seas.ro
+ chester.edu 
+  lic:   
+1****** PrimeSim HSPICE -- T-2022.06-SP1-2 win64 (Oct 31 2022 7869328) ******
+ ******  
+ **** ece 222 course project ****
+
+ ****** circuit name directory
+ circuit number to circuit name directory
+   number circuitname                     definition         multiplier
+        0 main circuit
+        1 xx2.                            dut                1.00 
+        2 xx2.x1.                         opa1656            1.00 
+        3 xx2.x2.                         buf634a            1.00 
+        4 xx2.x1.x_h1.                    block_dc_h1_opa1656
+                                                                 1.00 
+        5 xx2.x1.x_h2.                    block_dc_h2_opa1656
+                                                                 1.00 
+        6 xx2.x1.x_h3.                    block_dc_h3_opa1656
+                                                                 1.00 
+        7 xx2.x1.x_s1.                    block_dc_s1_opa1656
+                                                                 1.00 
+        8 xx2.x1.x_s2.                    block_dc_s2_opa1656
+                                                                 1.00 
+        9 xx2.x1.x_u1.                    vnse_opa1656       1.00 
+       10 xx2.x1.x_u10.                   clamp_amp_lo_opa1656
+                                                                 1.00 
+       11 xx2.x1.x_u11.                   clamp_amp_lo_opa1656
+                                                                 1.00 
+       12 xx2.x1.x_u12.                   clamp_amp_hi_opa1656
+                                                                 1.00 
+       13 xx2.x1.x_u16.                   ol_sense_opa1656   1.00 
+       14 xx2.x1.x_u18.                   clawp_opa1656      1.00 
+       15 xx2.x1.x_u19.                   clawn_opa1656      1.00 
+       16 xx2.x1.x_u20.                   esd_bb_opa1656     1.00 
+       17 xx2.x1.x_u21.                   esd_out_opa1656    1.00 
+       18 xx2.x1.x_u22.                   cl_src_opa1656     1.00 
+       19 xx2.x1.x_u23.                   gr_src_opa1656     1.00 
+       20 xx2.x1.x_u25.                   sw_ol_opa1656      1.00 
+       21 xx2.x1.x_u26.                   iq_src_opa1656     1.00 
+       22 xx2.x1.x_u27.                   iq_src_opa1656     1.00 
+       23 xx2.x1.x_u30.                   aol_1_opa1656      1.00 
+       24 xx2.x1.x_u31.                   aol_2_opa1656      1.00 
+       25 xx2.x1.x_u32.                   zo_src_opa1656     1.00 
+       26 xx2.x1.x_u35.                   claw_src_opa1656   1.00 
+       27 xx2.x1.x_u36.                   femt_opa1656       1.00 
+       28 xx2.x1.x_u37.                   femt_opa1656       1.00 
+       29 xx2.x1.x_u4.                    vos_drift_opa1656
+                                                                 1.00 
+       30 xx2.x1.x_u5.                    esd_in_opa1656     1.00 
+       31 xx2.x1.x_u6.                    vcm_clamp_opa1656
+                                                                 1.00 
+       32 xx2.x2.x_aol_2.                 aol_2_buf634a      1.00 
+       33 xx2.x2.x_clawn.                 clawn_buf634a      1.00 
+       34 xx2.x2.x_clawp.                 clawp_buf634a      1.00 
+       35 xx2.x2.x_claw_amp.              clamp_amp_lo_buf634a
+                                                                 1.00 
+       36 xx2.x2.x_claw_src.              claw_src_buf634a   1.00 
+       37 xx2.x2.x_cl_amp.                clamp_amp_lo_buf634a
+                                                                 1.00 
+       38 xx2.x2.x_cl_src.                cl_src_buf634a     1.00 
+       39 xx2.x2.x_esd_in.                esd_in_buf634a     1.00 
+       40 xx2.x2.x_esd_out.               esd_out_buf634a    1.00 
+       41 xx2.x2.x_e_n.                   vnse_buf634a       1.00 
+       42 xx2.x2.x_gr_amp.                clamp_amp_hi_buf634a
+                                                                 1.00 
+       43 xx2.x2.x_gr_src.                gr_src_buf634a     1.00 
+       44 xx2.x2.x_h3.                    op_amp_complete_h3_buf634a
+                                                                 1.00 
+       45 xx2.x2.x_iq_n.                  iq_src_buf634a     1.00 
+       46 xx2.x2.x_iq_p.                  iq_src_buf634a     1.00 
+       47 xx2.x2.x_i_np.                  femt_buf634a       1.00 
+       48 xx2.x2.x_vcm_clamp.             vcm_clamp_buf634a
+                                                                 1.00 
+       49 xx2.x2.x_vos_drift.             vos_drift_buf634a
+                                                                 1.00 
+       50 xx2.x2.x_w1.                    op_amp_complete_w1_buf634a
+                                                                 1.00 
+       51 xx2.x2.x_w2.                    op_amp_complete_w2_buf634a
+                                                                 1.00 
+ ******  
+ **** ece 222 course project ****
+
+ ****** diode model parameters tnom=  27.000 temp=  27.000 ******
+ ********************************************************
+ *** common model parameters model name:   9:dvn     ****
+ ********************************************************
+
+     names  values   units     names  values   units     names  values   units
+     -----  ------   -----     -----  ------   -----     -----  ------   -----
+
+   1*** dc breakdown parameters ***
+       vb=   0.    volts        ibv=   1.00m amps   
+
+   2*** parasitic resistance parameters ***
+       rs=   0.    ohms   
+
+   3*** capacitance parameters ***
+       fc= 500.00m              fcs= 500.00m                m= 500.00m        
+     mjsw= 330.00m               pb= 800.00m volts        php= 800.00m volts  
+       tt=   0.    secs         cjo=   0.    f/area       cjp=   0.    f/pj   
+
+   4*** temperature effect parameters ***
+     tlev=   0.               tlevc=   0.                 tcv=   0.    v/deg k
+      trs=   0.    /deg         cta=   0.    /deg         ctp=   0.    /deg   
+      xti=   3.00            xtitun=   3.00               keg=   1.00         
+       eg=   1.11  ev          gap1= 702.00u  ev/deg     gap2=   1.11k  deg   
+     ttt1=   0.    /deg        ttt2=   0.    /deg2        tm1=   0.    /deg   
+      tm2=   0.    /deg2        tpb=   0.    v/deg k     tphp=   0.    v/deg k
+     tref=  27.00   deg c 
+
+   5*** noise parameters ***
+       kf=  31.62p               af=   1.00         
+
+   ***  level   1  model parameters  ***
+
+    level=   1.00                is= 1.0e-16 amps         jsw=   0.    amps   
+        n=   1.00               nbv=   1.00                ik=   0.    amp    
+     area=   1.00                pj=   0.                 ikr=   0.    amp    
+    expli=   0.    amps      explir=   0.    amps        jtun=   0.    amps   
+   jtunsw=   0.    amps        ntun=  30.00         
+  
+ ********************************************************
+ *** common model parameters model name:  41:dvn     ****
+ ********************************************************
+
+     names  values   units     names  values   units     names  values   units
+     -----  ------   -----     -----  ------   -----     -----  ------   -----
+
+   1*** dc breakdown parameters ***
+       vb=   0.    volts        ibv=   1.00m amps   
+
+   2*** parasitic resistance parameters ***
+       rs=   0.    ohms   
+
+   3*** capacitance parameters ***
+       fc= 500.00m              fcs= 500.00m                m= 500.00m        
+     mjsw= 330.00m               pb= 800.00m volts        php= 800.00m volts  
+       tt=   0.    secs         cjo=   0.    f/area       cjp=   0.    f/pj   
+
+   4*** temperature effect parameters ***
+     tlev=   0.               tlevc=   0.                 tcv=   0.    v/deg k
+      trs=   0.    /deg         cta=   0.    /deg         ctp=   0.    /deg   
+      xti=   3.00            xtitun=   3.00               keg=   1.00         
+       eg=   1.11  ev          gap1= 702.00u  ev/deg     gap2=   1.11k  deg   
+     ttt1=   0.    /deg        ttt2=   0.    /deg2        tm1=   0.    /deg   
+      tm2=   0.    /deg2        tpb=   0.    v/deg k     tphp=   0.    v/deg k
+     tref=  27.00   deg c 
+
+   5*** noise parameters ***
+       kf=  44.72p               af=   1.00         
+
+   ***  level   1  model parameters  ***
+
+    level=   1.00                is= 1.0e-16 amps         jsw=   0.    amps   
+        n=   1.00               nbv=   1.00                ik=   0.    amp    
+     area=   1.00                pj=   0.                 ikr=   0.    amp    
+    expli=   0.    amps      explir=   0.    amps        jtun=   0.    amps   
+   jtunsw=   0.    amps        ntun=  30.00         
+  
+ ********************************************************
+ *** common model parameters model name:  47:dnvf    ****
+ ********************************************************
+
+     names  values   units     names  values   units     names  values   units
+     -----  ------   -----     -----  ------   -----     -----  ------   -----
+
+   1*** dc breakdown parameters ***
+       vb=   0.    volts        ibv=   1.00m amps   
+
+   2*** parasitic resistance parameters ***
+       rs=   0.    ohms   
+
+   3*** capacitance parameters ***
+       fc= 500.00m              fcs= 500.00m                m= 500.00m        
+     mjsw= 330.00m               pb= 800.00m volts        php= 800.00m volts  
+       tt=   0.    secs         cjo=   0.    f/area       cjp=   0.    f/pj   
+
+   4*** temperature effect parameters ***
+     tlev=   0.               tlevc=   0.                 tcv=   0.    v/deg k
+      trs=   0.    /deg         cta=   0.    /deg         ctp=   0.    /deg   
+      xti=   3.00            xtitun=   3.00               keg=   1.00         
+       eg=   1.11  ev          gap1= 702.00u  ev/deg     gap2=   1.11k  deg   
+     ttt1=   0.    /deg        ttt2=   0.    /deg2        tm1=   0.    /deg   
+      tm2=   0.    /deg2        tpb=   0.    v/deg k     tphp=   0.    v/deg k
+     tref=  27.00   deg c 
+
+   5*** noise parameters ***
+       kf=   3.16p               af=   1.00         
+
+   ***  level   1  model parameters  ***
+
+    level=   1.00                is= 1.0e-16 amps         jsw=   0.    amps   
+        n=   1.00               nbv=   1.00                ik=   0.    amp    
+     area=   1.00                pj=   0.                 ikr=   0.    amp    
+    expli=   0.    amps      explir=   0.    amps        jtun=   0.    amps   
+   jtunsw=   0.    amps        ntun=  30.00         
+  
+ ******  
+ **** ece 222 course project ****
+
+ ****** res model parameters tnom=  27.000 temp=  27.000 ******
+ *********************************
+ ***  model name:   2:r_noisel****
+ *********************************
+
+     names  values   units     names  values   units     names  values   units
+     -----  ------   -----     -----  ------   -----     -----  ------   -----
+    level=   0.                   w=   0.    meters        dw=   0.    meters 
+        l=   0.    meters       dlr=   0.    meters      tc1r=   0.    /deg   
+     tc2r=   0.    /deg2       tref=  27.00  deg k       tc1c=   0.    /deg   
+     tc2c=   0.    /deg2       bulk=  gnd              shrink=   1.00         
+    scale=   1.00               res=   0.    ohms         cap=   0.    farad  
+      rac=   0.    ohms         rsh=   0.    ohm/sq       cox=   0.    f/m**2 
+    capsw=   0.    f/m        thick=   0.    meters    cratio= 500.00m        
+       di=   0.               noise=   0.                wmin=   0.    meters 
+     wmax=   1.00m meters      lmin=   0.    meters      lmax=   1.00m meters 
+       kf=   0.                  af=   2.00                lf=   1.00         
+       wf=   1.00                ef=   1.00         
+  
+ *********************************
+ ***  model name:   3:r_noisel****
+ *********************************
+
+     names  values   units     names  values   units     names  values   units
+     -----  ------   -----     -----  ------   -----     -----  ------   -----
+    level=   0.                   w=   0.    meters        dw=   0.    meters 
+        l=   0.    meters       dlr=   0.    meters      tc1r=   0.    /deg   
+     tc2r=   0.    /deg2       tref=  27.00  deg k       tc1c=   0.    /deg   
+     tc2c=   0.    /deg2       bulk=  gnd              shrink=   1.00         
+    scale=   1.00               res=   0.    ohms         cap=   0.    farad  
+      rac=   0.    ohms         rsh=   0.    ohm/sq       cox=   0.    f/m**2 
+    capsw=   0.    f/m        thick=   0.    meters    cratio= 500.00m        
+       di=   0.               noise=   0.                wmin=   0.    meters 
+     wmax=   1.00m meters      lmin=   0.    meters      lmax=   1.00m meters 
+       kf=   0.                  af=   2.00                lf=   1.00         
+       wf=   1.00                ef=   1.00         
+  
+             
+ Summary of Linear Res Distribution Info
+ -----------------------------------------------------
+ |Range                        |Total     |Percent(%)|
+ |-----------------------------+----------+----------|
+ |1.000000e-04  ~  1.000000e-03|27        |13.7755   |
+ |1.000000e-03  ~  1.000000e-02|1         |0.5102    |
+ |1.000000e-01  ~  1.000000e+00|44        |22.4490   |
+ |1.000000e+00  ~  1.000000e+03|45        |22.9592   |
+ |1.000000e+03  ~  1.000000e+05|18        |9.1837    |
+ |1.000000e+05  ~  1.000000e+06|14        |7.1429    |
+ |1.000000e+06  ~  1.000000e+07|1         |0.5102    |
+ |1.000000e+07  ~  1.000000e+08|4         |2.0408    |
+ |1.000000e+08  ~  1.000000e+09|28        |14.2857   |
+ |1.000000e+11  ~  1.000000e+12|14        |7.1429    |
+ -----------------------------------------------------
+              
+             
+ Summary of Linear Cap Distribution Info
+ -----------------------------------------------------
+ |Range                        |Total     |Percent(%)|
+ |-----------------------------+----------+----------|
+ |1.000000e-15  ~  1.000000e-14|27        |42.1875   |
+ |1.000000e-14  ~  1.000000e-13|2         |3.1250    |
+ |1.000000e-13  ~  1.000000e-12|1         |1.5625    |
+ |1.000000e-12  ~  1.000000e-11|13        |20.3125   |
+ |1.000000e-11  ~  1.000000e-10|2         |3.1250    |
+ |1.000000e-10  ~  1.000000e-09|4         |6.2500    |
+ |1.000000e-09  ~  1.000000e-08|3         |4.6875    |
+ |1.000000e-08  ~  1.000000e-07|2         |3.1250    |
+ |1.000000e-07  ~  1.000000e-06|6         |9.3750    |
+ |1.000000e-06  ~  1.000000e-05|1         |1.5625    |
+ |1.000000e-04  ~  1.000000e-03|2         |3.1250    |
+ |1.000000e-03  ~  1.000000e-02|1         |1.5625    |
+ -----------------------------------------------------
+              
+             
+ Summary of Detailed RC Type Statistics
+ -----------------------------
+ |Element Type    |Number    |
+ |----------------+----------|
+ |Constant Res    |33        |
+ |Other Linear Res|163       |
+ |                |          |
+ |Constant Cap    |64        |
+ -----------------------------
+              
+  
+      
+ *****************************************************************
+ ******  option summary
+ ******
+ runlvl  = 6         bypass  = 2.0000    
+  Opening plot unit= 79
+ file=C:\Users\William\Documents\Code\ECE 222\Amplifier Project\V3 - Low Pass and High Pass Filters\2 - Input Impedance\2_AC_Zin.pa0
+
+ **info** dc convergence successful at Newton-Raphson method 
+ ******  
+ **** ece 222 course project ****
+
+ ****** operating point information tnom=  27.000 temp=  27.000 ******
+ ****** operating point status is all       simulation time is     0.     
+     node    =voltage       node    =voltage       node    =voltage
+
+ + 0:in      =   0.       0:out     =  33.6326m  0:vdd     =  12.0000 
+ + 0:vss     = -12.0000   1:n1      =   0.       1:n2      = 192.0969n
+ + 1:n3      = 492.1836u  1:n41     =   4.5949m  1:n42     =   4.3447m
+ + 2:cl_clamp=   5.2545m  2:clamp   =   5.2547m  2:claw_cla=   5.2545m
+ + 2:esdn    = 492.1833u  2:esdp    = 192.1353n  2:mid     = -35.4270p
+ + 2:n1356061=-514.7455m  2:n1356115= 285.2545m  2:n1356333=-514.7455m
+ + 2:n1356345=-514.7455m  2:n1356409= 285.2545m  2:n1356429= 285.2545m
+ + 2:n158495 =   5.2545m  2:n161737 = 291.2166u  2:n161937 =   4.5949m
+ + 2:n2402147= -35.2542p  2:n2402155= -35.3918p  2:n24207  = 192.1353n
+ + 2:n2425287= -35.4270p  2:n2425309=  12.0000   2:n2425325= -12.0000 
+ + 2:n24458  =   1.0166n  2:n24659  = -35.2542p  2:n2516366=  59.7309m
+ + 2:n2516408=  59.7309m  2:n25248  = -35.2542p  2:n2526910=   5.2545m
+ + 2:n2531913=   5.2547m  2:n2531921=   5.2547m  2:n2532013=   5.2547m
+ + 2:n25397  = 475.7791u  2:n25415  = 475.7791u  2:n2549439= 133.5819n
+ + 2:n2549447=   8.0166u  2:n25921  =  -3.8124   2:n25929  =  -8.3873u
+ + 2:n2707598=  36.1996m  2:n2707608=   5.2545m  2:n27785  =  70.7639m
+ + 2:n27793  =   8.0166u  2:n28311  =   8.0170u  2:n28438  = 475.7791u
+ + 2:n28678  = 492.1834u  2:n31303  = 492.1833u  2:n31389  =   9.7500 
+ + 2:n31737  = -12.0000   2:n32236  = 492.1834u  2:n32347  = 492.1834u
+ + 2:n32510  =   8.4183n  2:n36262  =   5.2545m  2:n37029  =  59.7565m
+ + 2:n37037  =  85.3298u  2:n39124  =  59.7309m  2:n39417  =  59.7309m
+ + 2:n39473  =  59.7309m  2:n39884  =  59.7250m  2:n39892  = 597.1903u
+ + 2:n39920  =  59.7309m  2:n45999  =   4.5949m  2:n46041  =  59.7173m
+ + 2:n55560  = -35.4270p  2:n56849  = -35.4270p  2:n57321  = -35.4270p
+ + 2:n57325  = -35.4270p  2:n59739  =  89.1000   2:n59743  = -35.4270p
+ + 2:n59747  = -35.4270p  2:n59865  = -35.4270p  2:n59881  = -35.4270p
+ + 2:n59905  = -98.8200   2:n65567  =  75.0000   2:n65575  = -35.4270p
+ + 2:n65579  = -35.4270p  2:n65697  = -35.4270p  2:n65713  = -35.4270p
+ + 2:n65737  = -83.0000   2:n68774  =   5.2547m  2:n72064  =  12.0000 
+ + 2:n72073  = -12.0000   2:n72391  = -12.0000   2:n72398  =  12.0000 
+ + 2:n81574  =-555.9472p  2:n81664  =-315.7068p  2:n81756  = -35.4270p
+ + 2:sw_ol_op= -35.4270p  2:v11     =-555.9472p  2:v12     =-315.7068p
+ + 2:vcc_b   =  12.0000   2:vcc_clp =  12.0000   2:vclp    =   5.2545m
+ + 2:vee_b   = -12.0000   2:vee_clp = -12.0000   2:vimon   = 291.2166u
+ + 2:vout_s  =   4.5949m  2:vsense  =   5.2547m  3:cl_clamp=  37.9435m
+ + 3:clamp   =  37.9438m  3:claw_cla=  37.9435m  3:esdp    =   4.3447m
+ + 3:mid     = -29.7492m  3:n06456  =   4.3447m  3:n110431 =   1.0213 
+ + 3:n112292 =  33.6326m  3:n11984  =  33.7447m  3:n25816  =  38.0114m
+ + 3:n28602  = -10.0000   3:n30136  =  10.0000   3:n30913  =  38.0114m
+ + 3:n31014  =  38.0114m  3:n317950 = -29.1439p  3:n35669  =  10.6881 
+ + 3:n35813  =  10.6881   3:n38050  = -10.7000   3:n38096  = -10.7000 
+ + 3:n406634 =  12.0000   3:n406794 = -12.0000   3:n42663  = -29.7492m
+ + 3:n42834  = -29.7492m  3:n44757  = -29.7492m  3:n44799  = -29.7492m
+ + 3:n45856  = -29.7492m  3:n45892  = -29.7492m  3:n45974  = -29.7492m
+ + 3:n45986  = -29.7492m  3:n48550  =-374.0297   3:n50645  = 355.9703 
+ + 3:n56635  = -29.7492m  3:n56659  = -29.7492m  3:n56721  = -29.7492m
+ + 3:n56733  = -29.7492m  3:n56891  = -41.0297   3:n56919  =  40.9703 
+ + 3:n61579  =  37.9435m  3:n638952 =  33.7447m  3:n706292 = -31.8772m
+ + 3:n709083 =  39.1712   3:n709139 = -27.6105m  3:n79181  =  37.9435m
+ + 3:n797835 = -93.6516   3:n910505 = -25.4382m  3:n910769 = -25.4382m
+ + 3:n910865 =  11.1776   3:n918956 = -25.4382m  3:n922430 =  37.9437m
+ + 3:n922458 =  37.9438m  3:n922543 =  37.9436m  3:n922557 =  37.9436m
+ + 3:vcc_b   =  12.0000   3:vcc_clp =  10.6880   3:vee_b   = -12.0000 
+ + 3:vee_clp = -10.7000   3:vimon   =   1.0213   3:vout_s  =  33.6326m
+ + 3:vsense  =  37.9435m  3:zo      =  33.6326m  9:3       =   0.     
+ + 9:4       =   0.       9:5       =   0.       9:6       =   0.     
+ + 9:7       = 833.7629m  9:8       = 833.7629m 27:3       =   0.     
+ +27:5       =   0.      28:3       =   0.      28:5       =   0.     
+ +41:3       =   0.      41:4       =   0.      41:5       =   0.     
+ +41:6       =   0.      41:7       = 833.7629m 41:8       = 833.7629m
+ +47:3       =   0.      47:4       =   0.      47:5       =   0.     
+ +47:6       =   0.      47:7       = 833.7629m 47:8       = 833.7629m
+ +50:vc1     =  67.6927u 50:vc2     =   0.      51:vc1     = -67.6927u
+ +51:vc2     =   0.     
+
+
+ **** voltage sources
+
+ subckt                                        xx2.x1      xx2.x1    
+ element   0:vdd1      0:vss1      0:vx        2:v_v_grn   2:v_v_grp 
+  volts      12.0000    -12.0000      0.        -83.0000     75.0000 
+  current    -6.3841m     5.3333m     0.         83.0000p   -75.0000p
+  power      76.6087m    64.0000m     0.          6.8890n     5.6250n
+
+ subckt    xx2.x1      xx2.x1      xx2.x1      xx2.x1      xx2.x1    
+ element   2:v_v_iscn  2:v_v_iscp  2:v_v_orn   2:v_v_orp   2:v_vcm_ma
+  volts     -98.8200     89.1000   -520.0000m   280.0000m    -2.2500 
+  current    98.8200p   -89.1000p     0.          0.         -9.7500p
+  power       9.7654n     7.9388n     0.          0.        -21.9375p
+
+ subckt    xx2.x1      xx2.x2      xx2.x2      xx2.x2      xx2.x2    
+ element   2:v_vcm_mi  3:v_v_grn   3:v_v_grp   3:v_v_iscn  3:v_v_iscp
+  volts       0.        -41.0000     41.0000   -374.0000    356.0000 
+  current    12.0000p    41.0000n   -41.0000n   374.0000n  -356.0000n
+  power       0.          1.6810u     1.6810u   139.8760u   126.7360u
+
+ subckt    xx2.x2      xx2.x2      xx2.x1.x_h  xx2.x1.x_h  xx2.x1.x_h
+ element   3:v_vcm_ma  3:v_vcm_mi  4:vh_h1     5:vh_h2     6:vh_h3   
+  volts      -2.0000      2.0000      0.          0.          0.     
+  current   -10.0297n     9.9702n   291.2166n  -280.2798p   520.5202p
+  power     -20.0595n   -19.9405n     0.          0.          0.     
+
+ subckt    xx2.x2.x_h  xx2.x2.x_w  xx2.x2.x_w
+ element  44:vh_h3    50:vw_w1    51:vw_w2   
+  volts       0.          0.          0.     
+  current    -1.0510m    67.6927u   -67.6927u
+  power       0.          0.          0.     
+
+     total voltage source power dissipation=  140.8787m       watts
+
+
+
+ **** current sources
+
+ subckt    xx2.x1      xx2.x1      xx2.x1      xx2.x2      xx2.x2    
+ element   2:i_i_b     2:i_i_os    2:i_i_q     3:i_i_b     3:i_i_q   
+  volts     192.1707n   492.1834u    24.0000     34.0939m    24.0000 
+  current    15.0000p    -5.0000p     3.9000m   250.0000n     1.3000m
+  power      -2.8826a     2.4609f   -93.6000m    -8.5235n   -31.2000m
+
+ subckt    xx2.x1.x_u  xx2.x1.x_u  xx2.x2.x_e  xx2.x2.x_e  xx2.x2.x_i
+ element   9:i1        9:i2       41:i1       41:i2       47:i1      
+  volts    -833.7629m  -833.7629m  -833.7629m  -833.7629m  -833.7629m
+  current    10.0000m    10.0000m    10.0000m    10.0000m    10.0000m
+  power       8.3376m     8.3376m     8.3376m     8.3376m     8.3376m
+
+ subckt    xx2.x2.x_i
+ element  47:i2      
+  volts    -833.7629m
+  current    10.0000m
+  power       8.3376m
+
+
+     total current source power dissipation= -74.7742m       watts
+
+ **** resistors
+
+ subckt                xx2         xx2         xx2         xx2       
+ element   0:rload     1:rsig      1:r1        1:r2        1:r3      
+  r value    32.0000    100.0000    100.0000k    12.0000k   100.0000k
+  v drop     33.6326m     0.        192.0969n   492.1836u    -4.1027m
+  current     1.0510m     0.          1.9210p    41.0153n   -41.0272n
+  power      35.3485u     0.        3.690e-19    20.1871p   168.3233p
+
+ subckt    xx2         xx2.x1      xx2.x1      xx2.x1      xx2.x1    
+ element   1:rlp       2:r_r1      2:r_r10     2:r_r11     2:r_r119  
+  r value     1.0000k    20.0000      1.0000    220.0000      1.0000x
+  v drop    250.1894u   -38.4194p     3.8124      8.3873u    -5.2545m
+  current   250.1894n    -1.9210p     3.8124     38.1239n    -5.2545n
+  power      62.5947p   7.380e-23    14.5344    319.7546f    27.6095p
+
+ subckt    xx2.x1      xx2.x1      xx2.x1      xx2.x1      xx2.x1    
+ element   2:r_r12     2:r_r120    2:r_r122    2:r_r123    2:r_r124  
+  r value   100.0000x     1.0000x     1.0000     16.4000k    10.0000k
+  v drop    -70.7559m    -5.2545m   -59.7309m     0.          0.     
+  current  -707.5591p    -5.2545n   -59.7309m     0.          0.     
+  power      50.0640p    27.6095p     3.5678m     0.          0.     
+
+ subckt    xx2.x1      xx2.x1      xx2.x1      xx2.x1      xx2.x1    
+ element   2:r_r125    2:r_r126    2:r_r127    2:r_r128    2:r_r129  
+  r value     1.0000    100.0000x     1.6950x     1.0000      1.0000 
+  v drop     -5.2547m    -7.8830u  -133.6173n    -8.0166u    -8.0170u
+  current    -5.2547m   -78.8303f   -78.8303f    -8.0166u    -8.0170u
+  power      27.6118u   6.214e-19   1.053e-20    64.2666p    64.2729p
+
+ subckt    xx2.x1      xx2.x1      xx2.x1      xx2.x1      xx2.x1    
+ element   2:r_r13     2:r_r14     2:r_r15     2:r_r16     2:r_r17   
+  r value     1.0000     11.3300k     1.0000m     1.0000k     1.0000m
+  v drop    -70.7639m    -8.0166u     0.         16.4043u     0.     
+  current   -70.7639m  -707.5591p     0.         16.4043n     0.     
+  power       5.0075m     5.6723f     0.        269.1008f     0.     
+
+ subckt    xx2.x1      xx2.x1      xx2.x1      xx2.x1      xx2.x1    
+ element   2:r_r18     2:r_r19     2:r_r2      2:r_r20     2:r_r21   
+  r value   1.000e+12   1.000e+12    20.0000      1.0000      1.0000m
+  v drop     -9.7500     12.0000    238.4582p   492.1835u     0.     
+  current    -9.7500p    12.0000p    11.9229p   492.1835u     0.     
+  power      95.0623p   143.9997p   2.843e-21   242.2446n     0.     
+
+ subckt    xx2.x1      xx2.x1      xx2.x1      xx2.x1      xx2.x1    
+ element   2:r_r22     2:r_r23     2:r_r24     2:r_r3      2:r_r32   
+  r value     1.0000x     1.0000x     1.0000k   1.000e+12     1.0000k
+  v drop     -8.4537n    -5.2547m    -5.2547m   192.1707n    -5.2545m
+  current    -8.4537f    -5.2547n    -5.2547u   1.922e-19    -5.2545u
+  power     7.147e-23    27.6118p    27.6118n   3.693e-26    27.6095n
+
+ subckt    xx2.x1      xx2.x1      xx2.x1      xx2.x1      xx2.x1    
+ element   2:r_r33     2:r_r34     2:r_r35     2:r_r36     2:r_r37   
+  r value     1.0000k   100.0000k     1.0000    143.0000      1.0000 
+  v drop     -5.2545m   -59.6712m   -59.7565m   -85.3298u   -59.7309m
+  current    -5.2545u  -596.7119n   -59.7565m  -596.7119n   -59.7309m
+  power      27.6095n    35.6065n     3.5708m    50.9173p     3.5678m
+
+ subckt    xx2.x1      xx2.x1      xx2.x1      xx2.x1      xx2.x1    
+ element   2:r_r38     2:r_r39     2:r_r4      2:r_r40     2:r_r41   
+  r value   740.0000k    10.0000k   1.000e+12    10.0000k     1.0000 
+  v drop   -159.5946a     0.       -492.1834u   -59.1278m   -59.7250m
+  current  -2.157e-22     0.       -492.1834a    -5.9128u   -59.7250m
+  power       0.          0.        2.422e-19   349.6092n     3.5671m
+
+ subckt    xx2.x1      xx2.x1      xx2.x1      xx2.x1      xx2.x1    
+ element   2:r_r42     2:r_r43     2:r_r46     2:r_r47     2:r_r48   
+  r value   101.0000      1.0000      1.0000      1.0000m     1.0000x
+  v drop   -597.1904u   -59.7173m    12.0000     12.0000n    12.0000 
+  current    -5.9128u   -59.7173m    12.0000     12.0000u    12.0000u
+  power       3.5311n     3.5662m   143.9997    143.9997f   143.9997u
+
+ subckt    xx2.x1      xx2.x1      xx2.x1      xx2.x1      xx2.x1    
+ element   2:r_r49     2:r_r5      2:r_r50     2:r_r51     2:r_r52   
+  r value   1.000e+12     1.0000      1.0000x     1.0000m     1.0000 
+  v drop    -35.4270p    -1.0520n    12.0000     12.0000n   -12.0000 
+  current  -3.543e-23    -1.0520n    12.0000u    12.0000u   -12.0000 
+  power       0.          1.1068a   143.9997u   143.9997f   143.9997 
+
+ subckt    xx2.x1      xx2.x1      xx2.x1      xx2.x1      xx2.x1    
+ element   2:r_r53     2:r_r54     2:r_r55     2:r_r56     2:r_r57   
+  r value   1.000e+12     1.0000      1.0000m   1.000e+12     1.0000 
+  v drop     12.0000      0.          0.        -12.0000      0.     
+  current    12.0000p     0.          0.        -12.0000p     0.     
+  power     143.9997p     0.          0.        143.9997p     0.     
+
+ subckt    xx2.x1      xx2.x1      xx2.x1      xx2.x1      xx2.x1    
+ element   2:r_r58     2:r_r59     2:r_r6      2:r_r60     2:r_r61   
+  r value     1.0000m   1.000e+12    10.0000k     1.0000      1.0000m
+  v drop      0.         89.1000     -1.0519n  -2.061e-24     0.     
+  current     0.         89.1000p  -105.1857f  -2.061e-24     0.     
+  power       0.          7.9388n   1.106e-22     0.          0.     
+
+ subckt    xx2.x1      xx2.x1      xx2.x1      xx2.x1      xx2.x1    
+ element   2:r_r62     2:r_r63     2:r_r64     2:r_r65     2:r_r66   
+  r value     1.0000m   1.000e+12     1.0000    1.000e+12     1.0000 
+  v drop      0.        -98.8200   -2.061e-24    75.0000   -2.061e-24
+  current     0.        -98.8200p  -2.061e-24    75.0000p  -2.061e-24
+  power       0.          9.7654n     0.          5.6250n     0.     
+
+ subckt    xx2.x1      xx2.x1      xx2.x1      xx2.x1      xx2.x1    
+ element   2:r_r67     2:r_r68     2:r_r69     2:r_r7      2:r_r70   
+  r value     1.0000m     1.0000m   1.000e+12     1.6430      1.0000 
+  v drop      0.          0.        -83.0000   -172.8201f  -2.061e-24
+  current     0.          0.        -83.0000p  -105.1857f  -2.061e-24
+  power       0.          0.          6.8890n   1.818e-26     0.     
+
+ subckt    xx2.x1      xx2.x1      xx2.x1      xx2.x1      xx2.x1    
+ element   2:r_r71     2:r_r72     2:r_r73     2:r_r74     2:r_r75   
+  r value     1.0000m     1.0000k     1.0000m     1.0000k     1.0000m
+  v drop      0.          0.          0.          0.          0.     
+  current     0.          0.          0.          0.          0.     
+  power       0.          0.          0.          0.          0.     
+
+ subckt    xx2.x1      xx2.x1      xx2.x1      xx2.x1      xx2.x1    
+ element   2:r_r76     2:r_r77     2:r_r78     2:r_r79     2:r_r8    
+  r value     1.0000k     1.0000k     1.0000      1.0000      1.0000k
+  v drop    -12.0000    -12.0000    285.2545m  -514.7455m   246.0494f
+  current   -12.0000m   -12.0000m   285.2545m  -514.7455m   246.0494a
+  power     143.9997m   143.9997m    81.3701m   264.9630m     0.     
+
+ subckt    xx2.x1      xx2.x1      xx2.x1      xx2.x1      xx2.x1    
+ element   2:r_r80     2:r_r81     2:r_r82     2:r_r83     2:r_r84   
+  r value   100.0000    100.0000      1.0000    100.0000    100.0000 
+  v drop      0.          0.          0.          0.          0.     
+  current     0.          0.          0.          0.          0.     
+  power       0.          0.          0.          0.          0.     
+
+ subckt    xx2.x1      xx2.x1      xx2.x1      xx2.x1      xx2.x1    
+ element   2:r_r85     2:r_r86     2:r_r87     2:r_r88     2:r_r9    
+  r value    10.0000k     1.0000      2.5590k     1.0000    100.0000x
+  v drop   -137.5956f  -172.8063f   -35.2107f  -172.8142f     3.8124 
+  current   -13.7596a  -172.8063f   -13.7596a  -172.8142f    38.1239n
+  power       0.        2.986e-26     0.        2.986e-26   145.3430n
+
+ subckt    xx2.x1      xx2.x1      xx2.x1      xx2.x1      xx2.x1    
+ element   2:r_r90     2:r_r91     2:r_r92     2:r_r93     2:r_r94   
+  r value     1.0000x     1.0000    169.8000k   667.0000      1.0000k
+  v drop    -30.9451m   -36.1996m    -5.2545m   -13.8778a     0.     
+  current   -30.9451n   -36.1996m   -30.9451n  -2.081e-20     0.     
+  power     957.5987p     1.3104m   162.6003p     0.          0.     
+
+ subckt    xx2.x1      xx2.x1      xx2.x1      xx2.x1      xx2.x1    
+ element   2:r_rdummy  2:r_rx      2:r_rx1     2:r_rx2     2:r_rx3   
+  r value     3.1500k    31.5000k   1.000e+12   100.0000    1.000e+12
+  v drop     -4.5949m   -55.1224m  -291.2166u  -1.084e-19    -4.5949m
+  current    -1.4587u    -1.7499u  -291.2166a  -1.084e-21    -4.5949f
+  power       6.7026n    96.4596n   8.481e-20     0.         21.1132a
+
+ subckt    xx2.x1      xx2.x1      xx2.x2      xx2.x2      xx2.x2    
+ element   2:r_rx4     2:r_r_diff  3:r_r1      3:r_r107    3:r_r108  
+  r value   100.0000    100.0000x    10.0000m     1.0000    1.000e+12
+  v drop      0.        491.9912u    -2.5019n    12.0000    -29.1439p
+  current     0.          4.9199p  -250.1894n    12.0000   -2.914e-23
+  power       0.          2.4206f   625.9474a   143.9997      0.     
+
+ subckt    xx2.x2      xx2.x2      xx2.x2      xx2.x2      xx2.x2    
+ element   3:r_r109    3:r_r110    3:r_r111    3:r_r112    3:r_r113  
+  r value     1.0000      1.0000m     1.0000x     1.0000x     1.0000m
+  v drop    -12.0000     12.0000n    12.0000     12.0000     12.0000n
+  current   -12.0000     12.0000u    12.0000u    12.0000u    12.0000u
+  power     143.9997    143.9997f   143.9997u   143.9997u   143.9997f
+
+ subckt    xx2.x2      xx2.x2      xx2.x2      xx2.x2      xx2.x2    
+ element   3:r_r12     3:r_r142    3:r_r143    3:r_r150    3:r_r151  
+  r value     1.0000k     1.0000      1.0000      1.0000     10.0000k
+  v drop    -63.3818m    39.2010    -93.6218    -67.6930m   -11.1440 
+  current   -63.3818u    39.2010    -93.6218    -67.6930m    -1.1144m
+  power       4.0173u     1.5367k     8.7651k     4.5823m    12.4189m
+
+ subckt    xx2.x2      xx2.x2      xx2.x2      xx2.x2      xx2.x2    
+ element   3:r_r153    3:r_r155    3:r_r1a11   3:r_r1a2    3:r_r21   
+  r value     1.0000    180.0000k    10.0000k    10.0000k     1.0000k
+  v drop    -11.2074     24.0000     39.1989    -93.6197     -4.2667m
+  current   -11.2074    133.3333u     3.9199m    -9.3620m    -4.2667u
+  power     125.6054      3.2000m   153.6550m   876.4652m    18.2044n
+
+ subckt    xx2.x2      xx2.x2      xx2.x2      xx2.x2      xx2.x2    
+ element   3:r_r25     3:r_r26     3:r_r27     3:r_r28     3:r_r29   
+  r value     1.0000g     1.0000g     1.0000      1.0000m     1.0000k
+  v drop      9.9702     10.0297    -67.7606m     0.         -1.3119 
+  current     9.9702n    10.0297n   -67.7606m     0.         -1.3119m
+  power      99.4057n   100.5956n     4.5915m     0.          1.7212m
+
+ subckt    xx2.x2      xx2.x2      xx2.x2      xx2.x2      xx2.x2    
+ element   3:r_r2a11   3:r_r2a2    3:r_r3      3:r_r30     3:r_r31   
+  r value   545.6000m   227.3000m   180.0000x     1.0000m     1.0000k
+  v drop      2.1387m    -2.1280m   -34.0939m     0.         10.7178 
+  current     3.9199m    -9.3620m  -189.4106p     0.         10.7178m
+  power       8.3834u    19.9221u     6.4577p     0.        114.8710m
+
+ subckt    xx2.x2      xx2.x2      xx2.x2      xx2.x2      xx2.x2    
+ element   3:r_r32     3:r_r33     3:r_r34     3:r_r35     3:r_r36   
+  r value     1.0000k     1.0000m     1.0000k     1.0000g     1.0000 
+  v drop      1.3000      0.        -10.6702    -10.7178     -4.4409f
+  current     1.3000m     0.        -10.6702m   -10.7178n    -4.4409f
+  power       1.6900m     0.        113.8538m   114.8710n     0.     
+
+ subckt    xx2.x2      xx2.x2      xx2.x2      xx2.x2      xx2.x2    
+ element   3:r_r37     3:r_r38     3:r_r39     3:r_r40     3:r_r41   
+  r value     1.0000m     1.0000m     1.0000      1.0000g     1.0000g
+  v drop      0.          0.          4.4409f    10.6702   -356.0000 
+  current     0.          0.          4.4409f    10.6702n  -356.0000n
+  power       0.          0.          0.        113.8538n   126.7360u
+
+ subckt    xx2.x2      xx2.x2      xx2.x2      xx2.x2      xx2.x2    
+ element   3:r_r42     3:r_r43     3:r_r44     3:r_r45     3:r_r46   
+  r value     1.0000      1.0000m     1.0000m     1.0000      1.0000g
+  v drop   -832.6673a     0.          0.        832.6673a   374.0000 
+  current  -832.6673a     0.          0.        832.6673a   374.0000n
+  power       0.          0.          0.          0.        139.8760u
+
+ subckt    xx2.x2      xx2.x2      xx2.x2      xx2.x2      xx2.x2    
+ element   3:r_r49     3:r_r50     3:r_r51     3:r_r52     3:r_r53   
+  r value     1.0000g     1.0000      1.0000m     1.0000m     1.0000 
+  v drop    -41.0000   -832.6673a     0.          0.        832.6673a
+  current   -41.0000n  -832.6673a     0.          0.        832.6673a
+  power       1.6810u     0.          0.          0.          0.     
+
+ subckt    xx2.x2      xx2.x2      xx2.x2      xx2.x2      xx2.x2    
+ element   3:r_r54     3:r_r55     3:r_r61     3:r_r62     3:r_r65   
+  r value     1.0000g     1.0000m     1.0000k     1.0000k     1.0000k
+  v drop     41.0000      0.        -67.6927m   -67.6927m   -67.6927m
+  current    41.0000n     0.        -67.6927u   -67.6927u   -67.6927u
+  power       1.6810u     0.          4.5823u     4.5823u     4.5823u
+
+ subckt    xx2.x2      xx2.x2      xx2.x2      xx2.x2      xx2.x2    
+ element   3:r_r66     3:r_r73     3:r_r74     3:r_r75     3:r_r81   
+  r value     1.0000k     1.0000     23.4100k    10.0000      1.0000g
+  v drop    -67.6927m    -4.3110m     1.4884f     0.         -1.0510 
+  current   -67.6927u    -4.3110m   6.358e-20     0.         -1.0510n
+  power       4.5823u    18.5844u     0.          0.          1.1046n
+
+ subckt    xx2.x2      xx2.x2      xx2.x2      xx2.x2      xx2.x1.x_s
+ element   3:r_r83     3:r_r9      3:r_r_vimo  3:r_r_vout  7:rs_s1   
+  r value     1.0000g     1.0000m     1.0000      1.0000      1.0000g
+  v drop    -63.3818m    -6.9389a  -222.0446a     0.       -520.0002m
+  current   -63.3818p    -6.9389f  -222.0446a     0.       -520.0002p
+  power       4.0173p     0.          0.          0.        270.4002p
+
+ subckt    xx2.x1.x_s  xx2.x1.x_u  xx2.x1.x_u  xx2.x1.x_u  xx2.x1.x_u
+ element   8:rs_s2     9:r1        9:r2        9:r3        9:r4      
+  r value     1.0000g     1.0000g     1.0000g     1.0000g     9.6170 
+  v drop   -279.9998m     0.          0.          0.          0.     
+  current  -279.9998p     0.          0.          0.          0.     
+  power      78.3999p     0.          0.          0.          0.     
+
+ subckt    xx2.x1.x_u  xx2.x1.x_u  xx2.x1.x_u  xx2.x1.x_u  xx2.x1.x_u
+ element   9:r5        9:r6        9:r7       27:r1       27:r2      
+  r value     9.6170      1.0000g     1.0000g    42.6240     42.6240 
+  v drop      0.          0.          0.          0.          0.     
+  current     0.          0.          0.          0.          0.     
+  power       0.          0.          0.          0.          0.     
+
+ subckt    xx2.x1.x_u  xx2.x1.x_u  xx2.x2.x_e  xx2.x2.x_e  xx2.x2.x_e
+ element  28:r1       28:r2       41:r1       41:r2       41:r3      
+  r value    42.6240     42.6240      1.0000g     1.0000g     1.0000g
+  v drop      0.          0.          0.          0.          0.     
+  current     0.          0.          0.          0.          0.     
+  power       0.          0.          0.          0.          0.     
+
+ subckt    xx2.x2.x_e  xx2.x2.x_e  xx2.x2.x_e  xx2.x2.x_e  xx2.x2.x_i
+ element  41:r4       41:r5       41:r6       41:r7       47:r1      
+  r value    13.6870     13.6870      1.0000g     1.0000g     1.0000g
+  v drop      0.          0.          0.          0.          0.     
+  current     0.          0.          0.          0.          0.     
+  power       0.          0.          0.          0.          0.     
+
+ subckt    xx2.x2.x_i  xx2.x2.x_i  xx2.x2.x_i  xx2.x2.x_i  xx2.x2.x_i
+ element  47:r2       47:r3       47:r4       47:r5       47:r6      
+  r value     1.0000g     1.0000g   855.4400k   855.4400k     1.0000g
+  v drop      0.          0.          0.          0.          0.     
+  current     0.          0.          0.          0.          0.     
+  power       0.          0.          0.          0.          0.     
+
+ subckt    xx2.x2.x_i
+ element  47:r7      
+  r value     1.0000g
+  v drop      0.     
+  current     0.     
+  power       0.     
+
+
+ **** inductors
+
+ subckt    xx2.x2.   
+ element   3:l_l2    
+  l value   800.0000p
+  v drop     74.8187n
+  current    67.6927u
+  power       5.0647p
+
+
+ **** voltage-controlled current sources
+
+
+ subckt      xx2.x1.x    xx2.x1.x    xx2.x1.x    xx2.x1.x    xx2.x1.x
+ element  10:gvo+     10:gvo-     11:gvo+     11:gvo-     12:gvo+    
+  v drop      0.          0.        2.061e-24   2.061e-24   2.061e-24
+  current     0.          0.          0.          0.          0.     
+
+
+
+ subckt      xx2.x1.x    xx2.x1.x    xx2.x1.x    xx2.x1.x    xx2.x1.x
+ element  12:gvo-     13:gsw+     18:g1       19:g1       21:g1      
+  v drop    2.061e-24     0.          5.2545m     5.2547m   -12.0000 
+  current     0.          0.          0.          0.        291.2166n
+
+
+
+ subckt      xx2.x1.x    xx2.x1.x    xx2.x1.x    xx2.x1.x    xx2.x1.x
+ element  22:g1       23:g1       24:g1       25:g1       26:g1      
+  v drop    -12.0000     -8.4537n    -5.2547m   -59.7173m     5.2545m
+  current     0.          8.4537f     5.4949n    59.7190m     0.     
+
+
+
+ subckt      xx2.x1.x    xx2.x2.x    xx2.x2.x    xx2.x2.x    xx2.x2.x
+ element  31:g1       32:g1       33:g1       34:g1       35:gvo+    
+  v drop   -492.1835u   -67.6930m    -1.3000     -1.3119      4.4409f
+  current   492.1835u    67.7606m     1.3000m     1.3119m     0.     
+
+
+
+ subckt      xx2.x2.x    xx2.x2.x    xx2.x2.x    xx2.x2.x    xx2.x2.x
+ element  35:gvo-     36:g1       37:gvo+     37:gvo-     38:g1      
+  v drop      4.4409f    67.6927m   832.6673a   832.6673a    67.6927m
+  current     0.          0.          0.          0.          0.     
+
+
+
+ subckt      xx2.x2.x    xx2.x2.x    xx2.x2.x    xx2.x2.x    xx2.x2.x
+ element  42:gvo+     42:gvo-     43:g1       45:g1       46:g1      
+  v drop    832.6673a   832.6673a    67.6930m    11.9703     12.0297 
+  current     0.          0.          0.          0.          1.0510m
+
+
+
+ subckt      xx2.x2.x    xx2.x1      xx2.x1      xx2.x1      xx2.x1  
+ element  48:g1        2:g_g1      2:g_g12     2:g_g13     2:g_g15   
+  v drop    -67.7606m     1.0520n     5.2545m     5.2545m    59.7565m
+  current    67.7606m    -1.0521n    -5.2545u    -5.2545u   -59.7571m
+
+
+
+ subckt      xx2.x1      xx2.x1      xx2.x1      xx2.x1      xx2.x1  
+ element   2:g_g16     2:g_g17     2:g_g18     2:g_g19     2:g_g2    
+  v drop     59.7309m    59.7309m    12.0000    -12.0000    246.0494f
+  current   -59.7309m   -59.7309m   -12.0000     12.0000   -172.8142a
+
+
+
+ subckt      xx2.x1      xx2.x1      xx2.x1      xx2.x1      xx2.x1  
+ element   2:g_g20     2:g_g21     2:g_g22     2:g_g23     2:g_g24   
+  v drop     12.0000    -12.0000   -514.7455m   285.2545m   172.8063f
+  current   -12.0000m    12.0000m   514.7455m  -285.2545m  -172.8201f
+
+
+
+ subckt      xx2.x1      xx2.x1      xx2.x1      xx2.x1      xx2.x1  
+ element   2:g_g25     2:g_g27     2:g_g28     2:g_g3      2:g_g4    
+  v drop    172.8142f    36.1996m    59.7250m    -3.8124     70.7639m
+  current  -172.8142f   -36.1996m   -59.7309m     3.8124    -70.7639m
+
+
+
+ subckt      xx2.x1      xx2.x1      xx2.x1      xx2.x1      xx2.x1  
+ element   2:g_g46     2:g_g47     2:g_g49     2:g_g5      2:g_g50   
+  v drop      5.2545m     5.2545m     5.2547m    16.4043u     8.0166u
+  current    -5.2545n    -5.2545n    -5.2547m   -16.4043n    -8.0166u
+
+
+
+ subckt      xx2.x1      xx2.x1      xx2.x2      xx2.x2      xx2.x2  
+ element   2:g_g51     2:g_g6      3:g_g12     3:g_g15     3:g_g16   
+  v drop      8.0170u     5.2547m    67.6927m    67.6927m    67.6927m
+  current    -8.0170u    -5.2547u   -67.6927u   -67.6927u   -67.6927u
+
+
+
+ subckt      xx2.x2      xx2.x2      xx2.x2      xx2.x2      xx2.x2  
+ element   3:g_g3      3:g_g36     3:g_g37     3:g_g59     3:g_g6    
+  v drop    -93.6218     12.0000    -12.0000     39.2010      4.2667m
+  current    93.6312    -12.0000     12.0000    -39.2049     -4.2667u
+
+
+
+ subckt      xx2.x2      xx2.x2      xx2.x2      xx2.x2      xx2.x1.x
+ element   3:g_g8      3:g_g9      3:g_gb11    3:g_gb12   27:g1      
+  v drop     10.7178    -10.6702     11.2074      4.3110m   192.1707n
+  current   -10.7178m    10.6702m   -11.2085     -4.3110m     0.     
+
+
+
+ subckt      xx2.x1.x    xx2.x2.x
+ element  28:g1       47:g1      
+  v drop    492.1834u    34.0939m
+  current     0.          0.     
+
+
+
+
+ **** voltage-controlled resistors
+
+
+ subckt      xx2.x1.x    xx2.x1.x    xx2.x1.x    xx2.x1.x    xx2.x1.x
+ element   7:gs_s1     8:gs_s1    14:g1       15:g1       16:gs1     
+  r value   1.000e+12   1.000e+12    23.8004u    23.9000u   999.9010g
+
+
+
+ subckt      xx2.x1.x    xx2.x1.x    xx2.x1.x    xx2.x1.x    xx2.x1.x
+ element  16:gs2      17:gs1      17:gs3      20:gs1      30:gs1     
+  r value   1.000e+12   1.000e+12   1.000e+12   1.000e+12   1.000e+12
+
+
+
+ subckt      xx2.x1.x    xx2.x1.x    xx2.x1.x    xx2.x2.x    xx2.x2.x
+ element  30:gs2      30:gs3      30:gs4      39:g2       39:g4      
+  r value   1.000e+12   1.000e+12   1.000e+12   1.000e+12   1.000e+12
+
+
+
+ subckt      xx2.x2.x    xx2.x2.x    xx2.x2.x    xx2.x2.x
+ element  40:g1       40:g2       50:g_w1     51:g_w2    
+  r value   1.000e+12   1.000e+12     1.0000m     1.0000m
+
+
+
+
+ **** voltage-controlled voltage sources
+
+
+ subckt      xx2.x1      xx2.x1      xx2.x1      xx2.x2      xx2.x1.x
+ element   2:e_e1      2:e_e2      2:e_e3      3:e_e3      9:e1      
+  volts     -35.4270p     5.2545m     4.5949m    63.3818m     0.     
+  current  -582.4255n     0.         -4.5949f   -63.3818p     0.     
+
+
+
+ subckt      xx2.x1.x    xx2.x1.x    xx2.x1.x    xx2.x1.x    xx2.x1.x
+ element   9:e2        9:e3       27:e1       28:e1       29:e1      
+  volts       0.          0.          0.          0.        475.5870u
+  current     0.         14.9999p     0.          0.         73.2352a
+
+
+
+ subckt      xx2.x2.x    xx2.x2.x    xx2.x2.x    xx2.x2.x    xx2.x2.x
+ element  41:e1       41:e2       41:e3       47:e1       47:e2      
+  volts       0.          0.          0.          0.          0.     
+  current     0.          0.        250.0000n     0.          0.     
+
+
+
+ subckt      xx2.x2.x
+ element  49:e1      
+  volts      29.4000m
+  current     7.1054f
+
+
+
+
+ **** current-controlled voltage sources
+
+
+ subckt      xx2.x1.x    xx2.x1.x    xx2.x1.x    xx2.x2.x    xx2.x2.x
+ element   4:h_h1      5:h_h2      6:h_h3     44:h_h3     50:h_i2v   
+  volts     291.2166u  -280.2798p  -520.5202p     1.0510     67.6927u
+  current  -291.2179a     0.          0.         -1.0510n     0.     
+
+
+
+ subckt      xx2.x2.x
+ element  51:h_i2v   
+  volts     -67.6927u
+  current     0.     
+
+
+
+
+ **** diodes
+
+
+ subckt      xx2.x1.x    xx2.x1.x    xx2.x2.x    xx2.x2.x    xx2.x2.x
+ element   9:d1        9:d2       41:d1       41:d2       47:d1      
+ model     9:dvn       9:dvn      41:dvn      41:dvn      47:dnvf    
+  id         10.0000m    10.0000m    10.0000m    10.0000m    10.0000m
+  vd        833.7629m   833.7629m   833.7629m   833.7629m   833.7629m
+  req         2.5864      2.5864      2.5864      2.5864      2.5864 
+  cap         0.          0.          0.          0.          0.     
+
+
+
+ subckt      xx2.x2.x
+ element  47:d2      
+ model    47:dnvf    
+  id         10.0000m
+  vd        833.7629m
+  req         2.5864 
+  cap         0.     
+
+
+
+ ******
+ **** ece 222 course project ****
+
+ ****** ac analysis tnom=  27.000 temp=  27.000 ******
+ zin_1k= 100.1185k
+ zin_5k= 100.1034k
+ zin_10k= 100.1075k
+ zin_15k= 100.1075k
+ zin_20k= 100.1114k
+
+          ***** job concluded
+ ******  
+ **** ece 222 course project ****
+
+ ****** job statistics summary tnom=  27.000 temp=  27.000 ******
+
+  ******  PrimeSim HSPICE Threads Information  ******
+
+  Command Line Threads Count :     1
+  Available CPU Count        :    16
+  Actual Threads Count       :     1
+
+
+  ******  Circuit Statistics  ******
+  # nodes       =     191 # elements   =     414
+  # resistors   =     196 # capacitors =      64 # inductors   =       1
+  # mutual_inds =       0 # vccs       =      91 # vcvs        =      16
+  # cccs        =       0 # ccvs       =       6 # volt_srcs   =      23
+  # curr_srcs   =      11 # diodes     =       6 # bjts        =       0
+  # jfets       =       0 # mosfets    =       0 # U elements  =       0
+  # T elements  =       0 # W elements =       0 # B elements  =       0
+  # S elements  =       0 # P elements =       0 # va device   =       0
+  # vector_srcs =       0 # N elements =       0
+
+
+  ******  Runtime Statistics (seconds)  ******
+
+  analysis           time    # points   tot. iter  conv.iter
+  op point           0.01           1          15
+  ac analysis        0.03          51          51
+  readin             0.06
+  errchk             0.01
+  setup              0.00
+  output             0.00
+
+
+           peak memory used         73.39 megabytes
+           total cpu time            0.11 seconds
+           total elapsed time       11.78 seconds
+           job started at     11:20:43 04/25/2024
+           job ended   at     11:20:54 04/25/2024
+           job total runtime        11.78 seconds
+
+
+  lic: Release hspice token(s) 
+ lic: total license checkout elapse time:       11.66(s)

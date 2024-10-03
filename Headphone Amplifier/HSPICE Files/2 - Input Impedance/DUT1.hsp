@@ -1,0 +1,29 @@
+.SUBCKT DUT in out vdd vss
+
+* Include our op-amps
+.include 'OPA1656.hsp'
+.include 'buf634a_a.hsp'
+
+* Resistors
+Rsig in N1 100
+R1 N2 0 100k
+R2 N3 0 12k
+R3 N3 N41 100k
+Rlp N41 N42 1k
+
+* Capacitors
+Chp N1 N2 88n
+C1plus vdd 0 0.1u
+C2plus vdd 0 100u
+C3plus vdd 0 0.1u
+Clp N42 0 6.4n
+
+C1minus vss 0 0.1u
+C2minus vss 0 100u
+C3minus vss 0 0.1u
+
+* Op-Amps
+X1 N2 N3 vdd vss N41 OPA1656
+X2 N42 out vdd vss BUF634A
+
+.ENDS DUT

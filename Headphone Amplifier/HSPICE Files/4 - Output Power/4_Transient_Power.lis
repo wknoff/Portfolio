@@ -1,0 +1,446 @@
+ ****** PrimeSim HSPICE -- T-2022.06-SP1-2 win64 (Oct 31 2022 7869328) ******
+  Copyright (c) 1986 - 2024 by Synopsys, Inc. All Rights Reserved.
+  This software and the associated documentation are proprietary
+  to Synopsys, Inc. This software may only be used in accordance
+  with the terms and conditions of a written license agreement with
+  Synopsys, Inc. All other use, reproduction, or distribution of
+  this software is strictly prohibited.
+  Input File: 4_Transient_Power.sp                                              
+  Command line options: C:\synopsys\Hspice_T-2022.06-SP1-2\WIN64\hspice.com -i 4_Transient_Power.sp -o C:\Users\William\Documents\Code\ECE 222\Amplifier Project\V3 - Low Pass and High Pass Filters\4 - Output Power\4_Transient_Power.lis
+  Start time: Thu Apr 25 11:22:55 2024
+  lic:  
+  lic: FLEXlm: SDK_12.11.3 
+  lic: USER:   William              HOSTNAME: LAPTOP-MAQ4I85U 
+  lic: HOSTID: 365afc8ee73b         PID:      58780 
+  lic: Using FLEXlm license file: 
+  lic: 5280@lmsynopsys.seas.rochester.edu 
+  lic: Checkout 1 hspice 
+  lic: License/Maintenance for hspice will expire on 03-may-2024/2023.12 
+  lic: 1(in_use)/50(total) FLOATING license(s) on SERVER 5280@lmsynopsys.seas.ro
+ chester.edu 
+  lic:   
+1****** PrimeSim HSPICE -- T-2022.06-SP1-2 win64 (Oct 31 2022 7869328) ******
+ ******  
+ **** ece 222 course project ****
+
+ ****** circuit name directory
+ circuit number to circuit name directory
+   number circuitname                     definition         multiplier
+        0 main circuit
+        1 xx1.                            dut                1.00 
+        2 xx1.x1.                         opa1656            1.00 
+        3 xx1.x2.                         buf634a            1.00 
+        4 xx1.x1.x_h1.                    block_dc_h1_opa1656
+                                                                 1.00 
+        5 xx1.x1.x_h2.                    block_dc_h2_opa1656
+                                                                 1.00 
+        6 xx1.x1.x_h3.                    block_dc_h3_opa1656
+                                                                 1.00 
+        7 xx1.x1.x_s1.                    block_dc_s1_opa1656
+                                                                 1.00 
+        8 xx1.x1.x_s2.                    block_dc_s2_opa1656
+                                                                 1.00 
+        9 xx1.x1.x_u1.                    vnse_opa1656       1.00 
+       10 xx1.x1.x_u10.                   clamp_amp_lo_opa1656
+                                                                 1.00 
+       11 xx1.x1.x_u11.                   clamp_amp_lo_opa1656
+                                                                 1.00 
+       12 xx1.x1.x_u12.                   clamp_amp_hi_opa1656
+                                                                 1.00 
+       13 xx1.x1.x_u16.                   ol_sense_opa1656   1.00 
+       14 xx1.x1.x_u18.                   clawp_opa1656      1.00 
+       15 xx1.x1.x_u19.                   clawn_opa1656      1.00 
+       16 xx1.x1.x_u20.                   esd_bb_opa1656     1.00 
+       17 xx1.x1.x_u21.                   esd_out_opa1656    1.00 
+       18 xx1.x1.x_u22.                   cl_src_opa1656     1.00 
+       19 xx1.x1.x_u23.                   gr_src_opa1656     1.00 
+       20 xx1.x1.x_u25.                   sw_ol_opa1656      1.00 
+       21 xx1.x1.x_u26.                   iq_src_opa1656     1.00 
+       22 xx1.x1.x_u27.                   iq_src_opa1656     1.00 
+       23 xx1.x1.x_u30.                   aol_1_opa1656      1.00 
+       24 xx1.x1.x_u31.                   aol_2_opa1656      1.00 
+       25 xx1.x1.x_u32.                   zo_src_opa1656     1.00 
+       26 xx1.x1.x_u35.                   claw_src_opa1656   1.00 
+       27 xx1.x1.x_u36.                   femt_opa1656       1.00 
+       28 xx1.x1.x_u37.                   femt_opa1656       1.00 
+       29 xx1.x1.x_u4.                    vos_drift_opa1656
+                                                                 1.00 
+       30 xx1.x1.x_u5.                    esd_in_opa1656     1.00 
+       31 xx1.x1.x_u6.                    vcm_clamp_opa1656
+                                                                 1.00 
+       32 xx1.x2.x_aol_2.                 aol_2_buf634a      1.00 
+       33 xx1.x2.x_clawn.                 clawn_buf634a      1.00 
+       34 xx1.x2.x_clawp.                 clawp_buf634a      1.00 
+       35 xx1.x2.x_claw_amp.              clamp_amp_lo_buf634a
+                                                                 1.00 
+       36 xx1.x2.x_claw_src.              claw_src_buf634a   1.00 
+       37 xx1.x2.x_cl_amp.                clamp_amp_lo_buf634a
+                                                                 1.00 
+       38 xx1.x2.x_cl_src.                cl_src_buf634a     1.00 
+       39 xx1.x2.x_esd_in.                esd_in_buf634a     1.00 
+       40 xx1.x2.x_esd_out.               esd_out_buf634a    1.00 
+       41 xx1.x2.x_e_n.                   vnse_buf634a       1.00 
+       42 xx1.x2.x_gr_amp.                clamp_amp_hi_buf634a
+                                                                 1.00 
+       43 xx1.x2.x_gr_src.                gr_src_buf634a     1.00 
+       44 xx1.x2.x_h3.                    op_amp_complete_h3_buf634a
+                                                                 1.00 
+       45 xx1.x2.x_iq_n.                  iq_src_buf634a     1.00 
+       46 xx1.x2.x_iq_p.                  iq_src_buf634a     1.00 
+       47 xx1.x2.x_i_np.                  femt_buf634a       1.00 
+       48 xx1.x2.x_vcm_clamp.             vcm_clamp_buf634a
+                                                                 1.00 
+       49 xx1.x2.x_vos_drift.             vos_drift_buf634a
+                                                                 1.00 
+       50 xx1.x2.x_w1.                    op_amp_complete_w1_buf634a
+                                                                 1.00 
+       51 xx1.x2.x_w2.                    op_amp_complete_w2_buf634a
+                                                                 1.00 
+ ******  
+ **** ece 222 course project ****
+
+ ****** diode model parameters tnom=  27.000 temp=  27.000 ******
+ ********************************************************
+ *** common model parameters model name:   9:dvn     ****
+ ********************************************************
+
+     names  values   units     names  values   units     names  values   units
+     -----  ------   -----     -----  ------   -----     -----  ------   -----
+
+   1*** dc breakdown parameters ***
+       vb=   0.    volts        ibv=   1.00m amps   
+
+   2*** parasitic resistance parameters ***
+       rs=   0.    ohms   
+
+   3*** capacitance parameters ***
+       fc= 500.00m              fcs= 500.00m                m= 500.00m        
+     mjsw= 330.00m               pb= 800.00m volts        php= 800.00m volts  
+       tt=   0.    secs         cjo=   0.    f/area       cjp=   0.    f/pj   
+
+   4*** temperature effect parameters ***
+     tlev=   0.               tlevc=   0.                 tcv=   0.    v/deg k
+      trs=   0.    /deg         cta=   0.    /deg         ctp=   0.    /deg   
+      xti=   3.00            xtitun=   3.00               keg=   1.00         
+       eg=   1.11  ev          gap1= 702.00u  ev/deg     gap2=   1.11k  deg   
+     ttt1=   0.    /deg        ttt2=   0.    /deg2        tm1=   0.    /deg   
+      tm2=   0.    /deg2        tpb=   0.    v/deg k     tphp=   0.    v/deg k
+     tref=  27.00   deg c 
+
+   5*** noise parameters ***
+       kf=  31.62p               af=   1.00         
+
+   ***  level   1  model parameters  ***
+
+    level=   1.00                is= 1.0e-16 amps         jsw=   0.    amps   
+        n=   1.00               nbv=   1.00                ik=   0.    amp    
+     area=   1.00                pj=   0.                 ikr=   0.    amp    
+    expli=   0.    amps      explir=   0.    amps        jtun=   0.    amps   
+   jtunsw=   0.    amps        ntun=  30.00         
+  
+ ********************************************************
+ *** common model parameters model name:  41:dvn     ****
+ ********************************************************
+
+     names  values   units     names  values   units     names  values   units
+     -----  ------   -----     -----  ------   -----     -----  ------   -----
+
+   1*** dc breakdown parameters ***
+       vb=   0.    volts        ibv=   1.00m amps   
+
+   2*** parasitic resistance parameters ***
+       rs=   0.    ohms   
+
+   3*** capacitance parameters ***
+       fc= 500.00m              fcs= 500.00m                m= 500.00m        
+     mjsw= 330.00m               pb= 800.00m volts        php= 800.00m volts  
+       tt=   0.    secs         cjo=   0.    f/area       cjp=   0.    f/pj   
+
+   4*** temperature effect parameters ***
+     tlev=   0.               tlevc=   0.                 tcv=   0.    v/deg k
+      trs=   0.    /deg         cta=   0.    /deg         ctp=   0.    /deg   
+      xti=   3.00            xtitun=   3.00               keg=   1.00         
+       eg=   1.11  ev          gap1= 702.00u  ev/deg     gap2=   1.11k  deg   
+     ttt1=   0.    /deg        ttt2=   0.    /deg2        tm1=   0.    /deg   
+      tm2=   0.    /deg2        tpb=   0.    v/deg k     tphp=   0.    v/deg k
+     tref=  27.00   deg c 
+
+   5*** noise parameters ***
+       kf=  44.72p               af=   1.00         
+
+   ***  level   1  model parameters  ***
+
+    level=   1.00                is= 1.0e-16 amps         jsw=   0.    amps   
+        n=   1.00               nbv=   1.00                ik=   0.    amp    
+     area=   1.00                pj=   0.                 ikr=   0.    amp    
+    expli=   0.    amps      explir=   0.    amps        jtun=   0.    amps   
+   jtunsw=   0.    amps        ntun=  30.00         
+  
+ ********************************************************
+ *** common model parameters model name:  47:dnvf    ****
+ ********************************************************
+
+     names  values   units     names  values   units     names  values   units
+     -----  ------   -----     -----  ------   -----     -----  ------   -----
+
+   1*** dc breakdown parameters ***
+       vb=   0.    volts        ibv=   1.00m amps   
+
+   2*** parasitic resistance parameters ***
+       rs=   0.    ohms   
+
+   3*** capacitance parameters ***
+       fc= 500.00m              fcs= 500.00m                m= 500.00m        
+     mjsw= 330.00m               pb= 800.00m volts        php= 800.00m volts  
+       tt=   0.    secs         cjo=   0.    f/area       cjp=   0.    f/pj   
+
+   4*** temperature effect parameters ***
+     tlev=   0.               tlevc=   0.                 tcv=   0.    v/deg k
+      trs=   0.    /deg         cta=   0.    /deg         ctp=   0.    /deg   
+      xti=   3.00            xtitun=   3.00               keg=   1.00         
+       eg=   1.11  ev          gap1= 702.00u  ev/deg     gap2=   1.11k  deg   
+     ttt1=   0.    /deg        ttt2=   0.    /deg2        tm1=   0.    /deg   
+      tm2=   0.    /deg2        tpb=   0.    v/deg k     tphp=   0.    v/deg k
+     tref=  27.00   deg c 
+
+   5*** noise parameters ***
+       kf=   3.16p               af=   1.00         
+
+   ***  level   1  model parameters  ***
+
+    level=   1.00                is= 1.0e-16 amps         jsw=   0.    amps   
+        n=   1.00               nbv=   1.00                ik=   0.    amp    
+     area=   1.00                pj=   0.                 ikr=   0.    amp    
+    expli=   0.    amps      explir=   0.    amps        jtun=   0.    amps   
+   jtunsw=   0.    amps        ntun=  30.00         
+  
+ ******  
+ **** ece 222 course project ****
+
+ ****** res model parameters tnom=  27.000 temp=  27.000 ******
+ *********************************
+ ***  model name:   2:r_noisel****
+ *********************************
+
+     names  values   units     names  values   units     names  values   units
+     -----  ------   -----     -----  ------   -----     -----  ------   -----
+    level=   0.                   w=   0.    meters        dw=   0.    meters 
+        l=   0.    meters       dlr=   0.    meters      tc1r=   0.    /deg   
+     tc2r=   0.    /deg2       tref=  27.00  deg k       tc1c=   0.    /deg   
+     tc2c=   0.    /deg2       bulk=  gnd              shrink=   1.00         
+    scale=   1.00               res=   0.    ohms         cap=   0.    farad  
+      rac=   0.    ohms         rsh=   0.    ohm/sq       cox=   0.    f/m**2 
+    capsw=   0.    f/m        thick=   0.    meters    cratio= 500.00m        
+       di=   0.               noise=   0.                wmin=   0.    meters 
+     wmax=   1.00m meters      lmin=   0.    meters      lmax=   1.00m meters 
+       kf=   0.                  af=   2.00                lf=   1.00         
+       wf=   1.00                ef=   1.00         
+  
+ *********************************
+ ***  model name:   3:r_noisel****
+ *********************************
+
+     names  values   units     names  values   units     names  values   units
+     -----  ------   -----     -----  ------   -----     -----  ------   -----
+    level=   0.                   w=   0.    meters        dw=   0.    meters 
+        l=   0.    meters       dlr=   0.    meters      tc1r=   0.    /deg   
+     tc2r=   0.    /deg2       tref=  27.00  deg k       tc1c=   0.    /deg   
+     tc2c=   0.    /deg2       bulk=  gnd              shrink=   1.00         
+    scale=   1.00               res=   0.    ohms         cap=   0.    farad  
+      rac=   0.    ohms         rsh=   0.    ohm/sq       cox=   0.    f/m**2 
+    capsw=   0.    f/m        thick=   0.    meters    cratio= 500.00m        
+       di=   0.               noise=   0.                wmin=   0.    meters 
+     wmax=   1.00m meters      lmin=   0.    meters      lmax=   1.00m meters 
+       kf=   0.                  af=   2.00                lf=   1.00         
+       wf=   1.00                ef=   1.00         
+  
+             
+ Summary of Linear Res Distribution Info
+ -----------------------------------------------------
+ |Range                        |Total     |Percent(%)|
+ |-----------------------------+----------+----------|
+ |1.000000e-04  ~  1.000000e-03|27        |13.7056   |
+ |1.000000e-03  ~  1.000000e-02|1         |0.5076    |
+ |1.000000e-01  ~  1.000000e+00|44        |22.3350   |
+ |1.000000e+00  ~  1.000000e+03|46        |23.3503   |
+ |1.000000e+03  ~  1.000000e+05|18        |9.1371    |
+ |1.000000e+05  ~  1.000000e+06|14        |7.1066    |
+ |1.000000e+06  ~  1.000000e+07|1         |0.5076    |
+ |1.000000e+07  ~  1.000000e+08|4         |2.0305    |
+ |1.000000e+08  ~  1.000000e+09|28        |14.2132   |
+ |1.000000e+11  ~  1.000000e+12|14        |7.1066    |
+ -----------------------------------------------------
+              
+             
+ Summary of Linear Cap Distribution Info
+ -----------------------------------------------------
+ |Range                        |Total     |Percent(%)|
+ |-----------------------------+----------+----------|
+ |1.000000e-15  ~  1.000000e-14|27        |42.1875   |
+ |1.000000e-14  ~  1.000000e-13|2         |3.1250    |
+ |1.000000e-13  ~  1.000000e-12|1         |1.5625    |
+ |1.000000e-12  ~  1.000000e-11|13        |20.3125   |
+ |1.000000e-11  ~  1.000000e-10|2         |3.1250    |
+ |1.000000e-10  ~  1.000000e-09|4         |6.2500    |
+ |1.000000e-09  ~  1.000000e-08|3         |4.6875    |
+ |1.000000e-08  ~  1.000000e-07|2         |3.1250    |
+ |1.000000e-07  ~  1.000000e-06|6         |9.3750    |
+ |1.000000e-06  ~  1.000000e-05|1         |1.5625    |
+ |1.000000e-04  ~  1.000000e-03|2         |3.1250    |
+ |1.000000e-03  ~  1.000000e-02|1         |1.5625    |
+ -----------------------------------------------------
+              
+             
+ Summary of Detailed RC Type Statistics
+ -----------------------------
+ |Element Type    |Number    |
+ |----------------+----------|
+ |Constant Res    |34        |
+ |Other Linear Res|163       |
+ |                |          |
+ |Constant Cap    |64        |
+ -----------------------------
+              
+  
+      
+ *****************************************************************
+ ******  option summary
+ ******
+ runlvl  = 6         bypass  = 2.0000    
+  Opening plot unit= 79
+ file=C:\Users\William\Documents\Code\ECE 222\Amplifier Project\V3 - Low Pass and High Pass Filters\4 - Output Power\4_Transient_Power.pa0
+
+ **info** dc convergence successful at Newton-Raphson method 
+ ******  
+ **** ece 222 course project ****
+
+ ****** operating point information tnom=  27.000 temp=  27.000 ******
+ ****** operating point status is voltage   simulation time is     0.     
+     node    =voltage       node    =voltage       node    =voltage
+
+ + 0:in      =   0.       0:out     =  33.3391m  0:sig     =   0.     
+ + 0:vdd     =  11.0000   0:vss     = -11.0000   1:n1      =   0.     
+ + 1:n2      =  90.7141n  1:n3      = 490.7151u  1:n41     =   4.5811m
+ + 1:n42     =   4.3310m  2:cl_clamp=   5.2389m  2:clamp   =   5.2392m
+ + 2:claw_cla=   5.2389m  2:esdn    = 490.7149u  2:esdp    =  90.7322n
+ + 2:mid     =  -8.1399p  2:n1356061=-514.7611m  2:n1356115= 285.2389m
+ + 2:n1356333=-514.7611m  2:n1356345=-514.7611m  2:n1356409= 285.2389m
+ + 2:n1356429= 285.2389m  2:n158495 =   5.2389m  2:n161737 = 291.0519u
+ + 2:n161937 =   4.5811m  2:n2402147=  -8.0583p  2:n2402155=  -8.1232p
+ + 2:n24207  =  90.7322n  2:n2425287=  -8.1399p  2:n2425309=  11.0000 
+ + 2:n2425325= -11.0000   2:n24458  = 488.6139p  2:n24659  =  -8.0583p
+ + 2:n2516366=  59.5738m  2:n2516408=  59.5738m  2:n25248  =  -8.0583p
+ + 2:n2526910=   5.2389m  2:n2531913=   5.2392m  2:n2531921=   5.2392m
+ + 2:n2532013=   5.2392m  2:n25397  = 475.6777u  2:n25415  = 475.6777u
+ + 2:n2549439= 122.4744n  2:n2549447=   7.3486u  2:n25921  =  -3.4947 
+ + 2:n25929  =  -7.6883u  2:n2707598=  36.0925m  2:n2707608=   5.2389m
+ + 2:n27785  =  64.8669m  2:n27793  =   7.3486u  2:n28311  =   7.3489u
+ + 2:n28438  = 475.6777u  2:n28678  = 490.7150u  2:n31303  = 490.7149u
+ + 2:n31389  =   8.7500   2:n31737  = -11.0000   2:n32236  = 490.7150u
+ + 2:n32347  = 490.7150u  2:n32510  =   8.4217n  2:n36262  =   5.2389m
+ + 2:n37029  =  59.5993m  2:n37037  =  85.1054u  2:n39124  =  59.5738m
+ + 2:n39417  =  59.5738m  2:n39473  =  59.5738m  2:n39884  =  59.5679m
+ + 2:n39892  = 595.6197u  2:n39920  =  59.5738m  2:n45999  =   4.5811m
+ + 2:n46041  =  59.5602m  2:n55560  =  -8.1399p  2:n56849  =  -8.1399p
+ + 2:n57321  =  -8.1399p  2:n57325  =  -8.1399p  2:n59739  =  89.1000 
+ + 2:n59743  =  -8.1399p  2:n59747  =  -8.1399p  2:n59865  =  -8.1399p
+ + 2:n59881  =  -8.1399p  2:n59905  = -98.8200   2:n65567  =  75.0000 
+ + 2:n65575  =  -8.1399p  2:n65579  =  -8.1399p  2:n65697  =  -8.1399p
+ + 2:n65713  =  -8.1399p  2:n65737  = -83.0000   2:n68774  =   5.2392m
+ + 2:n72064  =  11.0000   2:n72073  = -11.0000   2:n72391  = -11.0000 
+ + 2:n72398  =  11.0000   2:n81574  =-528.6601p  2:n81664  =-288.4196p
+ + 2:n81756  =  -8.1399p  2:sw_ol_op=  -8.1399p  2:v11     =-528.6601p
+ + 2:v12     =-288.4196p  2:vcc_b   =  11.0000   2:vcc_clp =  11.0000 
+ + 2:vclp    =   5.2389m  2:vee_b   = -11.0000   2:vee_clp = -11.0000 
+ + 2:vimon   = 291.0519u  2:vout_s  =   4.5811m  2:vsense  =   5.2392m
+ + 3:cl_clamp=  37.5820m  3:clamp   =  37.5821m  3:claw_cla=  37.5820m
+ + 3:esdp    =   4.3309m  3:mid     = -22.3094m  3:n06456  =   4.3309m
+ + 3:n110431 =   1.0195   3:n112292 =  33.3391m  3:n11984  =  33.7309m
+ + 3:n25816  =  37.6421m  3:n28602  =  -9.0000   3:n30136  =   9.0000 
+ + 3:n30913  =  37.6421m  3:n31014  =  37.6421m  3:n317950 = -20.8287p
+ + 3:n35669  =   9.6884   3:n35813  =   9.6884   3:n38050  =  -9.7000 
+ + 3:n38096  =  -9.7000   3:n406634 =  11.0000   3:n406794 = -11.0000 
+ + 3:n42663  = -22.3094m  3:n42834  = -22.3094m  3:n44757  = -22.3094m
+ + 3:n44799  = -22.3094m  3:n45856  = -22.3094m  3:n45892  = -22.3094m
+ + 3:n45974  = -22.3094m  3:n45986  = -22.3094m  3:n48550  =-374.0223 
+ + 3:n50645  = 355.9777   3:n56635  = -22.3094m  3:n56659  = -22.3094m
+ + 3:n56721  = -22.3094m  3:n56733  = -22.3094m  3:n56891  = -41.0223 
+ + 3:n56919  =  40.9777   3:n61579  =  37.5820m  3:n638952 =  33.7309m
+ + 3:n706292 = -24.2609m  3:n709083 =  35.8958   3:n709139 = -20.3498m
+ + 3:n79181  =  37.5820m  3:n797835 = -85.8811   3:n910505 = -18.0664m
+ + 3:n910769 = -18.0664m  3:n910865 =  11.0083   3:n918956 = -18.0664m
+ + 3:n922430 =  37.5820m  3:n922458 =  37.5821m  3:n922543 =  37.5819m
+ + 3:n922557 =  37.5819m  3:vcc_b   =  11.0000   3:vcc_clp =   9.6884 
+ + 3:vee_b   = -11.0000   3:vee_clp =  -9.7000   3:vimon   =   1.0195 
+ + 3:vout_s  =  33.3391m  3:vsense  =  37.5820m  3:zo      =  33.3391m
+ + 9:3       =   0.       9:4       =   0.       9:5       =   0.     
+ + 9:6       =   0.       9:7       = 833.7629m  9:8       = 833.7629m
+ +27:3       =   0.      27:5       =   0.      28:3       =   0.     
+ +28:5       =   0.      41:3       =   0.      41:4       =   0.     
+ +41:5       =   0.      41:6       =   0.      41:7       = 833.7629m
+ +41:8       = 833.7629m 47:3       =   0.      47:4       =   0.     
+ +47:5       =   0.      47:6       =   0.      47:7       = 833.7629m
+ +47:8       = 833.7629m 50:vc1     =  59.8914u 50:vc2     =   0.     
+ +51:vc1     = -59.8914u 51:vc2     =   0.     
+
+ ******
+ **** ece 222 course project ****
+
+ ****** transient analysis tnom=  27.000 temp=  27.000 ******
+ vout_peak=   3.5949     at=   1.2539m
+             from=   1.0000m    to=   2.0000m
+ vout_pp=   6.9542   from=   1.0000m     to=   2.0000m
+ pout_rms= 188.9099m
+ idd_avg= -41.6653m  from=   1.0000m     to=   2.0000m
+ iss_avg=  38.0003m  from=   1.0000m     to=   2.0000m
+ idd_peak=-117.6288m    at=   1.2540m
+             from=   1.0000m    to=   2.0000m
+ iss_peak= 110.2651m    at=   1.7536m
+             from=   1.0000m    to=   2.0000m
+
+          ***** job concluded
+ ******  
+ **** ece 222 course project ****
+
+ ****** job statistics summary tnom=  27.000 temp=  27.000 ******
+
+  ******  PrimeSim HSPICE Threads Information  ******
+
+  Command Line Threads Count :     1
+  Available CPU Count        :    16
+  Actual Threads Count       :     1
+
+
+  ******  Circuit Statistics  ******
+  # nodes       =     192 # elements   =     415
+  # resistors   =     197 # capacitors =      64 # inductors   =       1
+  # mutual_inds =       0 # vccs       =      91 # vcvs        =      16
+  # cccs        =       0 # ccvs       =       6 # volt_srcs   =      23
+  # curr_srcs   =      11 # diodes     =       6 # bjts        =       0
+  # jfets       =       0 # mosfets    =       0 # U elements  =       0
+  # T elements  =       0 # W elements =       0 # B elements  =       0
+  # S elements  =       0 # P elements =       0 # va device   =       0
+  # vector_srcs =       0 # N elements =       0
+
+
+  ******  Runtime Statistics (seconds)  ******
+
+  analysis           time    # points   tot. iter  conv.iter
+  op point           0.01           1           9
+  transient         20.60        2001      203531       47919 rev=     15846
+  readin             0.06
+  errchk             0.01
+  setup              0.00
+  output             0.00
+
+
+           peak memory used         73.50 megabytes
+           total cpu time           20.68 seconds
+           total elapsed time       41.38 seconds
+           job started at     11:22:55 04/25/2024
+           job ended   at     11:23:37 04/25/2024
+           job total runtime        41.38 seconds
+
+
+  lic: Release hspice token(s) 
+ lic: total license checkout elapse time:       20.69(s)

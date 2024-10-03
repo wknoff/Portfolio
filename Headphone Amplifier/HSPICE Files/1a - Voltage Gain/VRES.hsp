@@ -1,0 +1,4 @@
+* Define the variable resistor subcircuit
+.SUBCKT VRES 1 2 VALUE=10K SET=0.5 
+R 1 2 'VALUE*SET+.001'
+.ENDS VRES

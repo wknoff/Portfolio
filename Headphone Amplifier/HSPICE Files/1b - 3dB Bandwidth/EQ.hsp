@@ -1,0 +1,26 @@
+.SUBCKT EQ IN OUT BASS=0.5 MID=0.5 TREBLE=0.5
+
+* Include the potentiometer
+.INCLUDE 'POT.hsp'
+
+* High pass filter (Treble)
+C6 IN E1 0.47u
+R4 E1 0 100
+X1 0 E1 E2 POT VALUE=10k SET='TREBLE'
+R2 E2 OUT 100k
+
+* Band-Pass filter (Mid)
+C7 IN E3 10u
+R5 E3 0 220
+R8 E3 E4 100
+C9 E4 0 0.47u
+X2 0 E4 E5 POT VALUE=10k SET='MID'
+R1 E5 OUT 100k
+
+* Low Pass Filter (BASS)
+R6 IN E6 220
+C8 E6 0 10u
+X3 0 E6 E7 POT VALUE=10k SET='BASS'
+R10 E7 OUT 100k
+
+.ENDS EQ

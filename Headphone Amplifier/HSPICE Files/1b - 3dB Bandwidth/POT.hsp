@@ -1,0 +1,5 @@
+* Define the potentiometer subcircuit
+.SUBCKT POT 1 T 2 VALUE=10K SET=0.5 
+RT 1 T 'VALUE*(1-SET)+.001' 
+RB T 2 'VALUE*SET+.001'
+.ENDS POT

@@ -1,0 +1,23 @@
+.SUBCKT DUT in out vdd vss
+
+* Include our op-amps
+.include 'OPA1656.hsp'
+
+* Include the Equalizer
+.INCLUDE 'EQ.hsp'
+X10 in eqout EQ BASS=1 MID=1 TREBLE=1
+
+* Resistors
+R1 N2 0 100k
+R2 N3 0 12k
+R3 N3 out 100k
+
+* Capacitors
+Chp eqout N2 88n
+C1plus vdd 0 0.1u
+C1minus vss 0 0.1u
+
+* Op-Amps
+X1 N2 N3 vdd vss out OPA1656
+
+.ENDS DUT
